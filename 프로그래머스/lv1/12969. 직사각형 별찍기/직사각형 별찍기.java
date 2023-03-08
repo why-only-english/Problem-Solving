@@ -1,20 +1,14 @@
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
-class Solution {
+public class Solution {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         int b = sc.nextInt();
-        
-        int row = 1;
-        while (row <= b) {
-            int column = 1;
-            while (column <= a) {
-                System.out.printf("*");
-                column++;
-            }
-            System.out.println();
-            row++;
-        }
+
+        StringBuilder sb = new StringBuilder();
+        IntStream.range(0, a).forEach(s -> sb.append("*"));
+        IntStream.range(0, b).forEach(s -> System.out.println(sb.toString()));
     }
 }
