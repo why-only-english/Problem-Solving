@@ -5,9 +5,9 @@ public class Main {
 
     static int N;
     static int[] arr;
-    static Set<Integer> possibleSum = new HashSet<>();
+    static boolean[] isReachable = new boolean[2000001]; // 최대 100000*20
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -21,16 +21,17 @@ public class Main {
 
         // 나올 수 없는 가장 작은 자연수 구하기
         for (int i = 1; ; i++) {
-            if(!possibleSum.contains(i)) {
+            if (!isReachable[i]) {
                 System.out.println(i);
                 break;
             }
         }
     }
+
     public static void dfs(int current, int sum) {
         if (current == N) {
             // 구해진 값 체크
-            possibleSum.add(sum);
+            isReachable[sum] = true;
             return;
         }
 
